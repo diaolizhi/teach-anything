@@ -16,10 +16,10 @@ const Home: NextPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [desc, setDesc] = useState("");
-  const [lang, setLang] = useState<VibeType>("English");
+  const [lang, setLang] = useState<VibeType>("中文");
   const [difficulty, setDifficulty] = useState<VibeType2>("Easy");
   const [generatedDescs, setGeneratedDescs] = useState<string>("");
-  const defultDesc = 'How to explain relativity?'
+  const defaultDesc = '如何制作番茄炒鸡蛋？'
 
   console.log("Streamed response: ", {generatedDescs});
   let promptObj = {
@@ -41,8 +41,8 @@ const Home: NextPage = () => {
     'Easy': "Easy",
     'Profession': "Profession",
   }
-  let text = desc||defultDesc
-  
+  let text = desc||defaultDesc
+
   const generateDesc = async (e: any) => {
     let prompt;
     if (difficultyObj[difficulty]=="Easy"){
@@ -111,7 +111,7 @@ const Home: NextPage = () => {
           <div className="flex mt-4 items-center space-x-3 mb-3">
             <span className="w-7 h-7 rounded-full bg-black text-white text-center leading-7">1</span>
             <p className="text-left font-medium">
-              Write your question
+              请输入你的问题
             </p>
           </div>
           <textarea
@@ -120,12 +120,12 @@ const Home: NextPage = () => {
             rows={4}
             className="w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black block"
             placeholder={
-              "e.g. "+defultDesc
+              "例如："+defaultDesc
             }
           />
           <div className="flex my-4 items-center space-x-3">
             <span className="w-7 h-7 rounded-full bg-black text-white text-center leading-7">2</span>
-            <p className="text-left font-medium">Select your language</p>
+            <p className="text-left font-medium">选择语言</p>
           </div>
           <div className="block">
             <DropDown vibe={lang} setVibe={(newLang) => setLang(newLang)} />
@@ -133,7 +133,7 @@ const Home: NextPage = () => {
 
           <div className="flex my-4 items-center space-x-3">
             <span className="w-7 h-7 rounded-full bg-black text-white text-center leading-7">3</span>
-            <p className="text-left font-medium">Select difficulty</p>
+            <p className="text-left font-medium">选择类型</p>
           </div>
           <div className="block">
             <DropDown2 vibe2={difficulty} setVibe2={(newDifficulty) => setDifficulty(newDifficulty)} />
@@ -234,7 +234,7 @@ const Home: NextPage = () => {
       <Footer />
       <div className="p-5 text-center md:fixed right-0 bottom-10">
         <a href="https://www.producthunt.com/posts/teach-anything?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-teach&#0045;anything" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=378102&theme=light" alt="Teach&#0032;Anything - Teach&#0032;you&#0032;anything&#0032;in&#0032;seconds | Product Hunt" width="250" height="54" /></a>
-      </div>            
+      </div>
     </div>
   );
 };
